@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/project-rent-auto/static/css/main.0b3c25b4.css",
+    "main.js": "/project-rent-auto/static/js/main.ada1af12.js",
+    "index.html": "/project-rent-auto/index.html",
+    "main.0b3c25b4.css.map": "/project-rent-auto/static/css/main.0b3c25b4.css.map",
+    "main.ada1af12.js.map": "/project-rent-auto/static/js/main.ada1af12.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0b3c25b4.css",
+    "static/js/main.ada1af12.js"
+  ]
+}
