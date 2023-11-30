@@ -1,30 +1,23 @@
+import { lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./Layout/Layout";
+import NotFound from "pages/NotFound/NotFound";
+
+const Home = lazy(() => import("../pages/Home/Home"));
+const FavoritesPage = lazy(() => import("../pages/Favorites/Favorites"));
+const CatalogPage = lazy(() => import("../pages/Catalog/Catalog"));
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: 40,
-        backgroundColor: "#282c34",
-        color: "white",
-      }}
-    >
-      <p>
-        Edit <code>src/App.jsx</code> and save to reload.
-      </p>
-      <a
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          color: "#61dafb",
-        }}
-      >
-        Learn React
-      </a>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
