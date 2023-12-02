@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { catalogReducer } from "./catalogSlice";
+import { catalogCarsReducer } from "./catalog/catalogAutoSlice";
 
 export const store = configureStore({
   reducer: {
-    catalog: catalogReducer,
+    catalogCars: catalogCarsReducer,
   },
 });
