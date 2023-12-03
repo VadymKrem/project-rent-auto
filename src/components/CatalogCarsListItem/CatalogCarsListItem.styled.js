@@ -1,59 +1,28 @@
 import styled from "@emotion/styled";
 
-export const Item = styled.li`
+export const ItemContent = styled.li`
   max-width: 274px;
   height: 475px;
   display: block;
+  position: relative;
+`;
+export const ButtonFavorite = styled.button`
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: tomato;
 `;
 
-// export const HeartButton = styled.button`
-//   position: absolute;
-//   right: 14px;
-//   top: 14px;
-//   background-color: inherit;
-//   transition: background-color 200ms linear;
-
-//   &:hover,
-//   :focus {
-//     background-color: inherit;
-//   }
-// `;
-
-// const setHeartFill = (props) => {
-//   switch (props.active) {
-//     case "true":
-//       return "#3470FF";
-//     case "false":
-//       return "transparent";
-//     default:
-//       return "transparent";
-//   }
-// };
-// const setHeartStroke = (props) => {
-//   switch (props.active) {
-//     case "true":
-//       return "#3470FF";
-//     case "false":
-//       return "#FFFFFF";
-//     default:
-//       return "#FFFFFF";
-//   }
-// };
-
-// export const HeartIcon = styled.svg`
-//   position: absolute;
-//   right: 14px;
-//   top: 14px;
-//   stroke: ${setHeartStroke};
-//   fill: ${setHeartFill};
-//   transition: stroke fill 200ms linear;
-
-//   &:hover,
-//   :focus {
-//     stroke: blue;
-//     fill: blue;
-//   }
-// `;
+export const IconFavoriteAdvert = styled("svg")`
+  width: 24px;
+  height: 16px;
+  z-index: 1000;
+  & use {
+    fill: var(--color1, #fff); /* Додайте цей рядок */
+  }
+`;
 export const ImageContainer = styled.div`
   width: 100%;
   height: 268px;
@@ -66,6 +35,7 @@ export const ImageCard = styled.img`
   object-fit: cover;
   display: flex;
   border-radius: 14px;
+  z-index: 1;
 `;
 
 export const TitleContainer = styled.div`

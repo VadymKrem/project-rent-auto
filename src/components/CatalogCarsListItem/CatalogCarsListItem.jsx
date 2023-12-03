@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import {
-  Item,
+  ItemContent,
   TitleContainer,
   Title,
   Price,
@@ -10,11 +10,13 @@ import {
   ImageCard,
   ImageContainer,
   Model,
+  ButtonFavorite,
 } from "./CatalogCarsListItem.styled";
 import { useState } from "react";
 import ModalWindow from "components/ModalWindow";
 // import { ModalInfo } from "components/ModalInfo";
-// import sprite from "../../assets/images/symbol-defs.svg";
+
+// import sprite from "assets/images/sprite.svg";
 
 const CatalogCarsListItem = ({
   id,
@@ -36,21 +38,51 @@ const CatalogCarsListItem = ({
 }) => {
   const addressArray = address.split(",");
   const [showModal, setShowModal] = useState(false);
-  const [activeHeart, setActiveHeart] = useState(false);
 
   const toggleModal = () => {
     setShowModal((prevState) => !prevState);
   };
 
-  const toggleActiveHeart = () => {
-    setActiveHeart((prevState) => !prevState);
+  const handleFavoriteAdvert = () => {
+    const FavoritesAdverts =
+      JSON.parse(localStorage.getItem("FavoritesAdverts")) || [];
+    FavoritesAdverts.push({
+      id,
+      year,
+      make,
+      model,
+      type,
+      img,
+      description,
+      fuelConsumption,
+      engineSize,
+      accessories,
+      functionalities,
+      rentalPrice,
+      rentalCompany,
+      address,
+      rentalConditions,
+      mileage,
+    });
+
+    localStorage.setItem("FavoritesAdverts", JSON.stringify(FavoritesAdverts));
+    console.log("FavoritesAdverts in localStorage:", FavoritesAdverts);
+
+    alert("Оголошення додано до обраних!");
+    console.log("Adding to favorites:", id, make, model);
   };
 
   return (
     <>
-      <Item>
+      <ItemContent>
         <ImageContainer>
           <ImageCard src={img} alt={make} />
+          <ButtonFavorite onClick={handleFavoriteAdvert}>
+            {/* <IconFavoriteAdvert>
+              <use href={`${sprite}#icon-heart`} />
+            </IconFavoriteAdvert> */}
+            F
+          </ButtonFavorite>
         </ImageContainer>
         <TitleContainer>
           <Title>
@@ -69,10 +101,10 @@ const CatalogCarsListItem = ({
         <Button type="button" onClick={toggleModal}>
           Learn more
         </Button>
-      </Item>
+      </ItemContent>
       {showModal && (
         <ModalWindow toggleModal={toggleModal}>
-          {/* <ModalInfo
+          <ModalInfo
             toggleModal={toggleModal}
             id={id}
             year={year}
@@ -90,7 +122,7 @@ const CatalogCarsListItem = ({
             country={addressArray[2]}
             rentalConditions={rentalConditions}
             mileage={mileage}
-          /> */}
+          />
         </ModalWindow>
       )}
     </>
