@@ -8,7 +8,7 @@ import {
   selectError,
   selectIsLoading,
 } from "redux/catalog/selectors";
-import { CatalogPage, ButtonArea, Button } from "./Catalog.styled";
+import { CatalogPage, ButtonLoadMore, Button } from "./Catalog.styled";
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -18,11 +18,13 @@ const Catalog = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    const advertsPerPage = 12;
+
     dispatch(
       fetchAllAdverts({
-        completed: false,
         page: currentPage,
-        limit: 12,
+        limit: advertsPerPage,
+        completed: false,
       })
     );
   }, [dispatch, currentPage]);
@@ -36,9 +38,9 @@ const Catalog = () => {
       {cars && (
         <CatalogPage>
           <CatalogCarsList cars={cars} isLoading={isLoading} error={error} />
-          <ButtonArea>
+          <ButtonLoadMore>
             <Button onClick={loadMore}>Load more</Button>
-          </ButtonArea>
+          </ButtonLoadMore>
         </CatalogPage>
       )}
     </Container>

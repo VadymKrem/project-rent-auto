@@ -8,11 +8,9 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "redux/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/project-rent-auto">
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter basename="/project-rent-auto">
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
 );

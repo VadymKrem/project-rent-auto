@@ -1,5 +1,5 @@
 // import { Loader } from "components/Loader";
-
+import { v4 as uuidv4 } from "uuid";
 import CatalogCarsListItem from "components/CatalogCarsListItem";
 import { CarsList } from "./CatalogCarsList.styled";
 
@@ -29,7 +29,7 @@ const CatalogCarsList = ({ cars, isLoading, error }) => {
               mileage,
             }) => (
               <CatalogCarsListItem
-                key={id}
+                key={uuidv4()}
                 id={id}
                 year={year}
                 make={make}
@@ -51,7 +51,7 @@ const CatalogCarsList = ({ cars, isLoading, error }) => {
           )}
         </CarsList>
       )}
-      {error && alert("Sorry, something is wrong!")}
+      {error && alert("Sorry, it's epic fail!")}
     </>
   );
 };

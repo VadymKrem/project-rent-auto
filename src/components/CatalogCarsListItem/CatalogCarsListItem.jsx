@@ -1,14 +1,15 @@
 import PropTypes from "prop-types";
 import {
   Item,
-  Image,
-  TitleArea,
+  TitleContainer,
   Title,
   Price,
   Button,
-  Characteristics,
-  CharacteristicsItem,
-  HeartIcon,
+  InfoContainer,
+  InfoItem,
+  ImageCard,
+  ImageContainer,
+  Model,
 } from "./CatalogCarsListItem.styled";
 import { useState } from "react";
 import ModalWindow from "components/ModalWindow";
@@ -48,30 +49,23 @@ const CatalogCarsListItem = ({
   return (
     <>
       <Item>
-        <HeartIcon
-          width={16}
-          height={14}
-          onClick={toggleActiveHeart}
-          active={activeHeart ? "true" : "false"}
-        >
-          {/* <use href={sprite + "#heart"}></use> */}
-        </HeartIcon>
-        <Image src={img} alt={make} />
-        <TitleArea>
+        <ImageContainer>
+          <ImageCard src={img} alt={make} />
+        </ImageContainer>
+        <TitleContainer>
           <Title>
-            {make}, {year}
+            {make} <Model>{model}</Model>, {year}
           </Title>
           <Price>{rentalPrice}</Price>
-        </TitleArea>
-        <Characteristics>
-          <CharacteristicsItem>{addressArray[1]}</CharacteristicsItem>
-          <CharacteristicsItem>{addressArray[2]}</CharacteristicsItem>
-          <CharacteristicsItem>{rentalCompany}</CharacteristicsItem>
-          <CharacteristicsItem>{type}</CharacteristicsItem>
-          <CharacteristicsItem>{model}</CharacteristicsItem>
-          <CharacteristicsItem>{id}</CharacteristicsItem>
-          <CharacteristicsItem>{functionalities[0]}</CharacteristicsItem>
-        </Characteristics>
+        </TitleContainer>
+        <InfoContainer>
+          <InfoItem>{addressArray[1]}</InfoItem>
+          <InfoItem>{addressArray[2]}</InfoItem>
+          <InfoItem>{rentalCompany}</InfoItem>
+          <InfoItem>{type}</InfoItem>
+          <InfoItem>{model}</InfoItem>
+          <InfoItem>{functionalities[0]}</InfoItem>
+        </InfoContainer>
         <Button type="button" onClick={toggleModal}>
           Learn more
         </Button>
