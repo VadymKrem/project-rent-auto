@@ -104,7 +104,7 @@ const CatalogCarsListItem = ({
       </ItemContent>
       {showModal && (
         <ModalWindow toggleModal={toggleModal}>
-          <ModalInfo
+          {/* <ModalInfoBlock
             toggleModal={toggleModal}
             id={id}
             year={year}
@@ -122,7 +122,7 @@ const CatalogCarsListItem = ({
             country={addressArray[2]}
             rentalConditions={rentalConditions}
             mileage={mileage}
-          />
+          /> */}
         </ModalWindow>
       )}
     </>
